@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Input Example</title>
+    <title>Data Entry Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,13 +28,28 @@
 <body>
     <h1>Enter a Number</h1>
     <input type="number" id="numberInput" placeholder="Type a number">
-    <button onclick="displayNumber()">Submit</button>
+    <button onclick="submitNumber()">Submit</button>
     <div id="result"></div>
+    <iframe src="http://your-github-username.github.io/your-repo-name/" width="100%" height="500"></iframe>
 
     <script>
-        function displayNumber() {
+        function submitNumber() {
             const number = document.getElementById('numberInput').value;
-            document.getElementById('result').innerText = `You entered: ${number}`;
+            fetch('https://your-backend-server.com/api/submit-number', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ number: number })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = `Data submitted successfully!`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = `Error submitting data: ${error.message}`;
+            });
         }
     </script>
 </body>
