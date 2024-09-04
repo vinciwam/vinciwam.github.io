@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Input Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter a Number</h1>
+    <input type="number" id="numberInput" placeholder="Type a number">
+    <button onclick="displayNumber()">Submit</button>
+    <div id="result"></div>
+
+    <script>
+        function displayNumber() {
+            const number = document.getElementById('numberInput').value;
+            document.getElementById('result').innerText = `You entered: ${number}`;
+        }
+    </script>
+</body>
+</html>
