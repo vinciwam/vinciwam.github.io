@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.148.0/three.module.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 document.addEventListener("DOMContentLoaded", function() {
