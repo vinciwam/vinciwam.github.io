@@ -1,5 +1,5 @@
-import * as THREE from './node_modules/three/build/three.module.js';
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import * as THREE from '.tree/main/node_modules/three/build/three.module.js';
+import { GLTFLoader } from '.tree/main/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded and parsed");
