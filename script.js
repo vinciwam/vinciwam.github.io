@@ -1,3 +1,6 @@
+import * as THREE from 'https://unpkg.com/three@0.148.0/build/three.js';
+import { GLTFLoader } from 'https://unpkg.com/three@0.148.0/examples/jsm/loaders/GLTFLoader.js';
+
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded and parsed");
 
