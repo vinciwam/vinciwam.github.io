@@ -171,7 +171,7 @@ async function submitNumbers() {
     const numbers = sliders.map(sliderId => parseFloat(document.getElementById(sliderId).value));
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/submit-numbers', {
+        const response = await fetch('https://vinciwam.github.io/submit-numbers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
