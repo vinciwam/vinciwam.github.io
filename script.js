@@ -1,5 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.110.0/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.110.0/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.110.0/examples/jsm/controls/OrbitControls.js';
+
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded and parsed");
@@ -30,6 +32,16 @@ function initThreeJS() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
+    // 添加OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // 启用阻尼效果
+    controls.dampingFactor = 0.25; // 大幅减少阻尼系数
+    controls.rotateSpeed = 3; // 增加旋转速度
+    controls.screenSpacePanning = false; // 禁用屏幕空间平移
+    controls.maxPolarAngle = Math.PI; // 允许垂直方向的全角旋转
+    controls.minDistance = 0.3; // 设置最小缩放距离
+    controls.maxDistance = 1.2; // 设置最大缩放距离
+
     // 添加灯光
     const ambientLight = new THREE.AmbientLight(0x404040); // 背景光
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -37,17 +49,24 @@ function initThreeJS() {
     scene.add(ambientLight, directionalLight);
 
     const loader = new GLTFLoader();
-    const models = [ 'arm0.glb','arm1.glb', 'arm2.glb', 'arm3.glb', 'arm4.glb', 'arm5.glb', 'arm6.glb'];
-    let modelPositions = [new THREE.Vector3(-0.1, 0, 0), new THREE.Vector3(0, 0, 0), new THREE.Vector3(0.03, 0, 0), new THREE.Vector3(0.1, 0, 0), new THREE.Vector3(0.13, 0, 0), new THREE.Vector3(0.2, 0, 0), new THREE.Vector3(0.23, 0, 0)];
+    const models = ['arm0.glb', 'arm1.glb', 'arm2.glb', 'arm3.glb', 'arm4.glb', 'arm5.glb', 'arm6.glb'];
+    camera.position.set(0.15, 0.2, 0.34);
+    let modelPositions = [
+        new THREE.Vector3(-0.1, 0, 0),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0.03, 0, 0),
+        new THREE.Vector3(0.1, 0, 0),
+        new THREE.Vector3(0.13, 0, 0),
+        new THREE.Vector3(0.2, 0, 0),
+        new THREE.Vector3(0.23, 0, 0)
+    ];
 
- models.forEach((modelName, index) => {
+    models.forEach((modelName, index) => {
         loader.load(
             `model/${modelName}`,
             function (gltf) {
                 gltf.scene.position.copy(modelPositions[index]);
                 scene.add(gltf.scene);
-
-                // 假设每个模型都是一个Mesh而不是有关节的结构
                 robotJoints[index] = gltf.scene; // 存储整个模型
             },
             undefined,
@@ -57,23 +76,20 @@ function initThreeJS() {
         );
     });
 
-function animate() {
-    requestAnimationFrame(animate);
+    function animate() {
+        requestAnimationFrame(animate);
 
-    updateRobotArm();
+        updateRobotArm();
 
-    camera.position.z = 0.4;
-    camera.position.x = 0.1;
-    camera.position.y = 0.3;
+        controls.update(); // 更新控制器
 
-    camera.lookAt(scene.position);
-
-    renderer.render(scene, camera);
-}
-
+        renderer.render(scene, camera);
+    }
 
     animate();
 }
+
+
 
 function updateRobotArm() {
     const angles = [];
@@ -158,7 +174,6 @@ function updatePositions() {
         robotJoints[6].position.set(currentX, currentY, 0);
     }
 }
-
 
 
 async function submitNumbers() {
