@@ -7,42 +7,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="canvasContainer"></div>
     <div id="slidersContainer">
-        <div class="sliderGroup">
-            <label for="slider1">Joint 1:</label>
-            <input type="range" id="slider1" min="-1.57" max="1.57" value="0" step="0.01">
-            <div id="sliderValue1">Current Value: 0</div>
+        <div class="sliderRow">
+            <div class="sliderGroup">
+                <label for="slider1">Joint 1:</label>
+                <input type="range" id="slider1" min="-1.57" max="1.57" value="0" step="0.01">
+                <div id="sliderValue1">Current Value: 0</div>
+            </div>
+            <div class="sliderGroup">
+                <label for="slider2">Joint 2:</label>
+                <input type="range" id="slider2" min="-1.57" max="1.57" value="0" step="0.01">
+                <div id="sliderValue2">Current Value: 0</div>
+            </div>
+            <div class="sliderGroup">
+                <label for="slider3">Joint 3:</label>
+                <input type="range" id="slider3" min="-1.57" max="1.57" value="0" step="0.01">
+                <div id="sliderValue3">Current Value: 0</div>
+            </div>
         </div>
-        <div class="sliderGroup">
-            <label for="slider2">Joint 2:</label>
-            <input type="range" id="slider2" min="-1.57" max="1.57" value="0" step="0.01">
-            <div id="sliderValue2">Current Value: 0</div>
-        </div>
-        <div class="sliderGroup">
-            <label for="slider3">Joint 3:</label>
-            <input type="range" id="slider3" min="-1.57" max="1.57" value="0" step="0.01">
-            <div id="sliderValue3">Current Value: 0</div>
-        </div>
-        <div class="sliderGroup">
-            <label for="slider4">Joint 4:</label>
-            <input type="range" id="slider4" min="-1.57" max="1.57" value="0" step="0.01">
-            <div id="sliderValue4">Current Value: 0</div>
-        </div>
-        <div class="sliderGroup">
-            <label for="slider5">Joint 5:</label>
-            <input type="range" id="slider5" min="-1.57" max="1.57" value="0" step="0.01">
-            <div id="sliderValue5">Current Value: 0</div>
-        </div>
-        <div class="sliderGroup">
-            <label for="slider6">Joint 6:</label>
-            <input type="range" id="slider6" min="-1.57" max="1.57" value="0" step="0.01">
-            <div id="sliderValue6">Current Value: 0</div>
+        <div class="sliderRow">
+            <div class="sliderGroup">
+                <label for="slider4">Joint 4:</label>
+                <input type="range" id="slider4" min="-1.57" max="1.57" value="0" step="0.01">
+                <div id="sliderValue4">Current Value: 0</div>
+            </div>
+            <div class="sliderGroup">
+                <label for="slider5">Joint 5:</label>
+                <input type="range" id="slider5" min="-1.57" max="1.57" value="0" step="0.01">
+                <div id="sliderValue5">Current Value: 0</div>
+            </div>
+            <div class="sliderGroup">
+                <label for="slider6">Joint 6:</label>
+                <input type="range" id="slider6" min="-1.57" max="1.57" value="0" step="0.01">
+                <div id="sliderValue6">Current Value: 0</div>
+            </div>
         </div>
     </div>
     <button onclick="submitNumbers()">Submit</button>
     <div id="loading">Loading...</div>
     <div id="result"></div>
-    <div id="canvasContainer"></div>
+
     <script type="module" src="script.js"></script>
 </body>
 </html>
