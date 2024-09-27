@@ -174,6 +174,3 @@ function updatePositions() {
         robotJoints[6].position.set(currentX, currentY, 0);
     }
 }
-
-
-
