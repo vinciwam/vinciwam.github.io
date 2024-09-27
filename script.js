@@ -184,9 +184,8 @@ async function submitNumbers() {
 
     const sliders = ['slider1', 'slider2', 'slider3', 'slider4', 'slider5', 'slider6'];
     const numbers = sliders.map(sliderId => parseFloat(document.getElementById(sliderId).value));
-
     try {
-        const response = await fetch('https://vinciwam.github.io/submit-numbers', {
+        const response = await fetch('https://968b-58-249-112-64.ngrok-free.app/api/submit-number', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
