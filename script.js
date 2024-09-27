@@ -184,13 +184,14 @@ async function submitNumbers() {
 
     const sliders = ['slider1', 'slider2', 'slider3', 'slider4', 'slider5', 'slider6'];
     const numbers = sliders.map(sliderId => parseFloat(document.getElementById(sliderId).value));
+
     try {
-        const response = await fetch('https://968b-58-249-112-64.ngrok-free.app/api/submit-number', {
+        const response = await fetch('https://968b-58-249-112-64.ngrok-free.app/api/submit-number', { // 使用 ngrok 提供的公共 URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ numbers: numbers })
+            body: JSON.stringify({ number: numbers.join(',') }) // 将数组转换为逗号分隔的字符串
         });
 
         if (!response.ok) {
