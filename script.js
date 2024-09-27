@@ -186,7 +186,7 @@ async function submitNumbers() {
     const numbers = sliders.map(sliderId => parseFloat(document.getElementById(sliderId).value));
 
     try {
-        const response = await fetch('https://968b-58-249-112-64.ngrok-free.app/api/submit-number', { // 使用 ngrok 提供的公共 URL
+        const response = await fetch(' https://6844-2001-250-3002-8240-a031-c284-ed58-a717.ngrok-free.app/api/submit-number', { // 使用 ngrok 提供的公共 URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
