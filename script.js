@@ -176,34 +176,4 @@ function updatePositions() {
 }
 
 
-async function submitNumbers() {
-    const resultDiv = document.getElementById('result');
-    const loadingDiv = document.getElementById('loading');
 
-    loadingDiv.style.display = 'block';
-
-    const sliders = ['slider1', 'slider2', 'slider3', 'slider4', 'slider5', 'slider6'];
-    const numbers = sliders.map(sliderId => parseFloat(document.getElementById(sliderId).value));
-
-    try {
-        const response = await fetch(' https://6844-2001-250-3002-8240-a031-c284-ed58-a717.ngrok-free.app/api/submit-number', { // 使用 ngrok 提供的公共 URL
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ number: numbers.join(',') }) // 将数组转换为逗号分隔的字符串
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        resultDiv.innerText = `Data submitted successfully! Response: ${data.message}`;
-    } catch (error) {
-        console.error('Error:', error);
-        resultDiv.innerText = `Error submitting data: ${error.message}`;
-    } finally {
-        loadingDiv.style.display = 'none';
-    }
-}
